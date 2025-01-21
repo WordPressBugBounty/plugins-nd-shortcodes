@@ -26,12 +26,14 @@
 .nd_options_background_color_E7E7E7 { background-color: #E7E7E7; }
 .nd_options_background_color_2271b1 { background-color: #2271b1; }
 .nd_options_background_color_d6363917 { background-color: #d6363917; }
+.nd_options_background_color_d63638_important { background-color: #d63638 !important; }
 
 /*border*/
 .nd_options_border_bottom_3_solid_0073aa { border-bottom: 3px solid #0073aa; }
 .nd_options_border_1_solid_e5e5e5 { border: 1px solid #e5e5e5; }
 .nd_options_border_top_width_0 { border-top-width: 0px; }
 .nd_options_border_left_width_0 { border-left-width: 0px; }
+.nd_options_border_width_0_important { border-width: 0px !important; }
 
 /*box-shadow*/
 .nd_options_box_shadow_0_1_1_000_04 { box-shadow: 0 1px 1px rgba(0,0,0,.04); }
@@ -40,6 +42,7 @@
 /*color*/
 .nd_options_color_ffffff { color: #fff; }
 .nd_options_color_ffffff_hover:hover { color: #fff; }
+.nd_options_color_ffffff_important { color: #fff !important; }
 .nd_options_color_a0a5aa { color: #a0a5aa; }
 .nd_options_color_666666 { color: #666666; }
 .nd_options_color_23282d { color: #23282d; }

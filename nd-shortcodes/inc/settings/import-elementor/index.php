@@ -432,11 +432,21 @@ function nicdark_import_demo() {
                 <!--plugins notice-->
                 <div class="nd_options_box_sizing_border_box nd_options_padding_20 nd_options_float_left nd_options_width_100_percentage">
                   <div class="notice notice-error nd_options_padding_20 nd_options_margin_top_30 nd_options_margin_0 nd_options_background_color_d6363917">
-                    <p><strong>'.esc_html__('ELEMENTOR PRO REQUIRED','nd-shortcodes').' : </strong><br/><br/>'.esc_html__('Elementor PRO it is not installed. You bought this theme with "Elementor PRO" indication needed to use some demos. ( Once you have installed and activated it, return and reload this page to import your demo.','nd-shortcodes').'</p>
-
+                    
+                    <p>
+                      <strong>'.esc_html__('ONE PLUGIN IS MISSING !','nd-shortcodes').'</strong>
+                      <br/><br/>
+                      '.esc_html__('Install one of','nd-shortcodes').'
+                      <a target="blank" href="https://www.nicdarkthemes.com/plugin-required/">'.esc_html__('these plugins','nd-shortcodes').'</a>
+                      '.esc_html__('for import this demo.','nd-shortcodes').'
+                    </p>
 
                     <br/>
-                    <a target="blank" href="https://www.nicdark.com/demos-with-elementor-pro/">'.esc_html__('For more information check our article.','nd-shortcodes').'<p></p></a>
+                    
+                    <a class="button nd_options_color_ffffff_important nd_options_background_color_d63638_important nd_options_border_width_0_important" target="blank" href="https://www.nicdarkthemes.com/plugin-required/">
+                      '.esc_html__('CHECK HERE','nd-shortcodes').'
+                    </a>
+
                   </div>
                 </div>
                 <!--plugins notice-->';
@@ -546,6 +556,8 @@ function nicdark_import_demo() {
                   $nd_options_theme_name = '';
                   $nd_options_theme_name = wp_get_theme();
                   $nd_options_theme_name = $nd_options_theme_name->get('TextDomain');
+                
+                  update_option( 'nicdark_type_demo', 1 );
 
                   //start if is love travel for new import
                   if ( $nd_options_theme_name == 'lovetravell' ) {
@@ -637,6 +649,11 @@ function nicdark_import_demo() {
                   
                   }
 
+              }else{
+
+                //plugins are not installed
+                update_option( 'nicdark_type_demo', 2 );
+
               }
 
             }
@@ -645,6 +662,58 @@ function nicdark_import_demo() {
 
 
 
+
+            /*START ONLY IF THE DEMO SELECTED DON'T NEED ELEMENTOR PRO AND HAS 2 AS VALUE*/
+            if ( $nd_options_elementorpro == 2 ) {
+            
+              $nd_options_step_demo_3 .= '
+              <div class="nd_options_section">
+                <div class="nd_options_width_100_percentage nd_options_padding_20 nd_options_box_sizing_border_box nd_options_float_left">
+                  <h2 class="nd_options_section nd_options_margin_0">'.esc_html__('1 - Import the Content','nd-shortcodes').'</h2>
+                  <p class="nd_options_color_666666 nd_options_section nd_options_margin_0 nd_options_margin_top_10 nd_options_margin_bottom_15">'.esc_html__('Download the Content.xml by clicking on the button below, save the file on your desktop and then upload the file Content.xml on WordPress Importer','nd-shortcodes').' <a target="_blank" href="'.admin_url().'admin.php?import=wordpress">'.esc_html__('here','nd-shortcodes').'</a></p>
+                  <a class="button" href="'.esc_url( get_template_directory_uri().'/import/'.$nd_options_demo.'/content.xml').'" download>'.esc_html__('Donwload Content.xml','nd-shortcodes').'</a>
+                  <p class="nd_options_color_666666 nd_options_section nd_options_margin_0 nd_options_margin_top_10">* '.esc_html__('If your server blocks the download of the file, get it from this path','nd-shortcodes').' : <u>'.esc_url( get_template_directory_uri().'/import/'.$nd_options_demo.'/content.xml').'</u></p>
+                </div>
+              </div>
+
+
+              <div class="nd_options_section nd_options_height_1 nd_options_background_color_E7E7E7 nd_options_margin_top_10 nd_options_margin_bottom_10"></div>
+
+
+              <div class="nd_options_section">
+                <div class="nd_options_width_100_percentage nd_options_padding_20 nd_options_box_sizing_border_box nd_options_float_left">
+                  <h2 class="nd_options_section nd_options_margin_0">'.esc_html__('2 - Import the Style','nd-shortcodes').'</h2>
+                  <p class="nd_options_color_666666 nd_options_section nd_options_margin_0 nd_options_margin_top_10 nd_options_margin_bottom_15">'.esc_html__('Download the Style.zip by clicking on the button below, save the file on your desktop and then upload the file Style.zip on Elementor Import Tool','nd-shortcodes').' <a target="_blank" href="'.admin_url().'admin.php?page=elementor-app#/import">'.esc_html__('here','nd-shortcodes').'</a></p>
+
+
+                  <a class="button" href="'.esc_url( get_template_directory_uri().'/import/'.$nd_options_demo.'/style.zip').'" download >'.esc_html__('Donwload Style.zip','nd-shortcodes').'</a>
+                  <p class="nd_options_color_666666 nd_options_section nd_options_margin_0 nd_options_margin_top_10">* '.esc_html__('If your server blocks the download of the file, get it from this path','nd-shortcodes').' : <u>'.esc_url( get_template_directory_uri().'/import/'.$nd_options_demo.'/style.zip').'</u></p>
+
+                </div>
+              </div>
+
+
+              <div class="nd_options_section nd_options_height_1 nd_options_background_color_E7E7E7 nd_options_margin_top_10 nd_options_margin_bottom_10"></div>
+
+
+              <div class="nd_options_section">
+                <div class="nd_options_width_40_percentage nd_options_padding_20 nd_options_box_sizing_border_box nd_options_float_left">
+                  
+                  <form action="'.esc_url(admin_url('themes.php')).'" method="get">
+                    <input type="hidden" name="page" value="nicdark-welcome-theme-page">
+                    <input type="hidden" name="step" value="4">
+                    <input class="button button-primary" type="submit" value="'.esc_html__('Go to the last Step ','nd-shortcodes').'*">
+                  </form>
+
+                  <p>* '.esc_html__('Mandatory step to import some important options of the chosen demo','nd-shortcodes').'</p>
+
+                </div>
+              </div>'
+              ;
+  
+
+            }
+            /*END ONLY IF THE DEMO SELECTED DON'T NEED ELEMENTOR PRO AND HAS 2 AS VALUE*/
             
 
 

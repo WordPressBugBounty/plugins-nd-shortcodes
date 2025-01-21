@@ -37,6 +37,7 @@
 
 /*color*/
 .nd_options_color_ffffff { color: #fff; }
+.nd_options_color_ffffff_important { color: #fff !important; }
 .nd_options_color_ffffff_hover:hover { color: #fff; }
 .nd_options_color_a0a5aa { color: #a0a5aa; }
 .nd_options_color_666666 { color: #666666; }
