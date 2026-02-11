@@ -233,6 +233,23 @@ function nicdark_import_demo() {
                     //end love travel check
 
 
+                  }elseif ( $nd_options_import_demo->image == 'elementor' ){
+
+
+                    $nd_options_step_demo_2_bakery = '
+
+                      <div class="nd_options_box_sizing_border_box nd_options_padding_20 nd_options_float_left nd_options_width_100_percentage">
+                        <div class="notice notice-error nd_options_padding_20 nd_options_margin_top_30 nd_options_margin_0">
+                          <p><strong>'.esc_html__('OLD BASIC DEMOS','nd-shortcodes').' : </strong>
+                            '.esc_html__('If you are looking for old basic demos check ','nd-shortcodes').' 
+                            <a target="_blank" href="'.$nd_options_import_demo->url.'">'.esc_html__('this link','nd-shortcodes').'</a>
+                          </p>
+                        </div>
+                      </div>
+
+                      ';
+
+
                   }else{
 
                     $nd_options_demos_list .= '
